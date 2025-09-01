@@ -1,5 +1,5 @@
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 
 export default function VideoPlayerScreen() {
 
@@ -18,10 +18,14 @@ export default function VideoPlayerScreen() {
       <VideoView
         player={player}
         style={{ width: '100%', height: '100%' }}
-        nativeControls={true}
+        nativeControls={false}
         allowsFullscreen={true}
         contentFit="contain"
       />
+      <View style={styles.controls}>
+        <Button title="Play" onPress={() => player.play()} />
+        <Button title="Pause" onPress={() => player.pause()} />
+      </View>
     </View>
   );
 }
@@ -31,5 +35,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: "#030712"
+  },
+  controls: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 20,
+    position: "absolute",
+    bottom: 50
   },
 });
